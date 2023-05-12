@@ -49,7 +49,6 @@ router.post("/login", (req, res, next) => {
           token: tokenObj.token,
           expiresIn: tokenObj.expires,
         });
-        res.redirect("/protected");
       } else {
         res
           .status(401)
