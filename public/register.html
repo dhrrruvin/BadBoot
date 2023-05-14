@@ -10,14 +10,15 @@
   <body>
     <section>
       <div class="form-box">
+        <p id="errorMsg"></p>
         <div class="form-value">
-          <form action="/register" method="post">
+          <form>
             <h2>Sign Up</h2>
             <div class="input-box">
               <ion-icon name="person-outline"></ion-icon>
               <input
                 type="text"
-                name="username"
+                id="username"
                 required
                 autocomplete="off"
                 placeholder=" "
@@ -28,7 +29,7 @@
               <ion-icon name="mail-outline"></ion-icon>
               <input
                 type="email"
-                name="email"
+                id="email"
                 required
                 placeholder=" "
                 autocomplete="off"
@@ -37,11 +38,10 @@
             </div>
             <div class="input-box">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input type="password" name="password" required placeholder=" " />
+              <input type="password" id="password" required placeholder=" " />
               <label for="">Password</label>
             </div>
-
-            <button id="submit-register" type="submit">Sign Up</button>
+            <button id="submit-register">Sign Up</button>
             <div class="login">
               <p>Alredy have an account? <a href="login.html">Login Here</a></p>
             </div>
@@ -49,6 +49,7 @@
         </div>
       </div>
     </section>
+    <script src="register.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

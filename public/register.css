@@ -18,6 +18,13 @@ section {
     overflow: hidden;
 }
 
+#errorMsg {
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    color:rgb(65, 225, 116);
+}
+
 .form-box {
     position: relative;
     width: 400px;
