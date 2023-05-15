@@ -10,14 +10,15 @@
   <body>
     <section>
       <div class="form-box">
+        <p id="errorMsg"></p>
         <div class="form-value">
-          <form action="/login" method="post">
+          <form>
             <h2>Log In</h2>
             <div class="input-box">
               <ion-icon name="mail-outline"></ion-icon>
               <input
                 type="email"
-                name="email"
+                id="email"
                 required
                 placeholder=" "
                 autocomplete="off"
@@ -26,7 +27,7 @@
             </div>
             <div class="input-box">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input type="password" name="password" required placeholder=" " />
+              <input type="password" id="password" required placeholder=" " />
               <label for="">Password</label>
             </div>
             <div class="forget">
@@ -43,6 +44,7 @@
         </div>
       </div>
     </section>
+    <script src="login.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
