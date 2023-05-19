@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 // const passport = require("passport");
+const parser = require("cookie-parser");
 
 require("dotenv").config();
 
@@ -17,6 +18,7 @@ require("./models/user");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(parser());
 
 app.use(cors());
 

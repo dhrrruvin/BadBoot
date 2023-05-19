@@ -26,7 +26,7 @@ const login = async (req, res, next) => {
   } catch (error) {
     console.error("Error comparing hashed password");
     console.log(error);
-    res.status(500).send("Log in failed");
+    res.status(500).json("Log in failed");
   }
 
   if (!isValidPassword) {
@@ -34,13 +34,20 @@ const login = async (req, res, next) => {
   }
   console.log("user found and validated");
   const tokenObj = utils.issueJwt(user);
+
+  const cookieOptions = {
+    expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
+
+  // res.setHeader("Authorization", tokenObj.token);
+  res.cookie("jwt", tokenObj.token, cookieOptions);
+
   res.status(200).json({
     success: true,
-    user: user,
-    token: tokenObj.token,
-    expiresIn: tokenObj.expires,
+    email: user.email,
+    name: user.username,
   });
-  return res.redirect("/protected");
 };
 
 module.exports = login;
