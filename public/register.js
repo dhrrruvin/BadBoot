@@ -1,20 +1,14 @@
 const errorMsg = document.getElementById("errorMsg");
-const submitBtn = document.getElementById("submit-register");
 const URL = "http://localhost:9979";
-
-submitBtn.addEventListener("click", (e) => {
-  register();
-});
 
 function register() {
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  console.log(username + email + password);
 
   const data = { username, email, password };
 
-  fetch("/register", {
+  fetch(`${URL}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,10 +16,16 @@ function register() {
     body: JSON.stringify(data),
   })
     .then((response) => {
-      if (response.status == 422) {
+      if (response.status == 403) {
         errorMsg.innerText = "This user already exist";
       } else if (response.status != 200) {
         errorMsg.innerText = "Unexpected error";
+
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      } else if (response.status == 200) {
+        location.href = `${URL}/login`;
       }
       return response.json();
     })
