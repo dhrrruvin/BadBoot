@@ -3,9 +3,11 @@ const path = require("path");
 const authMiddleWare = require("../lib/utils").authMiddleWare;
 const register = require("../controller/register");
 const login = require("../controller/login");
+const logout = require("../controller/logout");
+const getData = require("../controller/getData");
 
-router.get("/protected", authMiddleWare, (req, res, next) => {
-  res.status(200).json({ success: true, msg: "You are authorized!" });
+router.get("/home", authMiddleWare, (req, res, next) => {
+  res.sendFile(path.join(__dirname, "../public/homepage.html"));
 });
 
 router.get("/", (req, res, next) => {
@@ -19,6 +21,10 @@ router.get("/login", (req, res, next) => {
 router.get("/register", (req, res, next) => {
   res.sendFile(path.join(__dirname, "../public/register.html"));
 });
+
+router.get("/getData", getData);
+
+router.get("/logout", logout);
 
 router.post("/login", login);
 
